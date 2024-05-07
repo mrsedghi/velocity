@@ -1,0 +1,11 @@
+Model Information:
+* title:	Renualt Megane II Sedan
+* source:	https://sketchfab.com/3d-models/renualt-megane-ii-sedan-12ff4f56b2f14376a11a9f5ebeaae295
+* author:	BadKarma™ (https://sketchfab.com/890244234)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Renualt Megane II Sedan" (https://sketchfab.com/3d-models/renualt-megane-ii-sedan-12ff4f56b2f14376a11a9f5ebeaae295) by BadKarma™ (https://sketchfab.com/890244234) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
