@@ -21,7 +21,9 @@
     "lodash": "^4.17.21",
     "postprocessing": "^6.35.4",
     "react": "^18.2.0",
+    "react-color": "^2.19.3",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.2.1",
     "react-three-fiber": "^6.0.13",
     "three": "^0.163.0",
     "three-stdlib": "^2.29.9"
@@ -31,6 +33,7 @@
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.19",
+    "daisyui": "^4.11.1",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",

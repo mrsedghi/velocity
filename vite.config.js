@@ -6,5 +6,6 @@ export default defineConfig({
 	// optimizeDeps: {
 	// 	exclude: ["@react-three/fiber"],
 	// },
+	server: { host: true },
 	plugins: [react()],
 });
