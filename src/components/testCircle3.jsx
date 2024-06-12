@@ -14,18 +14,18 @@ const TestCircle3 = () => {
   const NUM_LEDS = 12;
   const initialColors = Array(NUM_LEDS).fill([120, 100, 50]);
   const [linePos, setLinePos] = useState([
-    { x: 0, y: 0, z: -0.2, rot: (Math.PI / 360) * 5 },
-    { x: -1, y: 0, z: -0.4, rot: (Math.PI / 360) * 9 },
-    { x: -2, y: 0, z: -0.8, rot: (Math.PI / 360) * 11 },
-    { x: -3, y: 0, z: -1.3, rot: (Math.PI / 360) * 13 },
-    { x: -4, y: 0, z: -1.9, rot: (Math.PI / 360) * 14 },
-    { x: -5, y: 0, z: -2.6, rot: (Math.PI / 360) * 17 },
-    { x: -6, y: 0, z: -3.4, rot: (Math.PI / 360) * 18 },
-    { x: -7, y: 0, z: -4.5, rot: (Math.PI / 360) * 22 },
-    { x: -8, y: 0, z: -5.7, rot: (Math.PI / 360) * 25 },
-    { x: -9, y: 0, z: -7.1, rot: (Math.PI / 360) * 25 },
-    { x: -10, y: 0, z: -8.6, rot: (Math.PI / 360) * 25 },
-    { x: -11, y: 0, z: -10.1, rot: (Math.PI / 360) * 25 },
+    { x: 0, y: 0, z: -0.2, rot: (Math.PI / 360) * 1 },
+    { x: -1, y: 0, z: -0.5, rot: (Math.PI / 360) * 4 },
+    { x: -2, y: 0, z: -1, rot: (Math.PI / 360) * 8 },
+    { x: -3, y: 0, z: -1.5, rot: (Math.PI / 360) * 12 },
+    { x: -4, y: 0, z: -2.0, rot: (Math.PI / 360) * 16 },
+    { x: -5, y: 0, z: -3, rot: (Math.PI / 360) * 18 },
+    { x: -6, y: 0, z: -4, rot: (Math.PI / 360) * 22 },
+    { x: -7, y: 0, z: -5, rot: (Math.PI / 360) * 26 },
+    { x: -8, y: 0, z: -6, rot: (Math.PI / 360) * 30 },
+    { x: -9, y: 0, z: -7.5, rot: (Math.PI / 360) * 34 },
+    { x: -10, y: 0, z: -9, rot: (Math.PI / 360) * 38 },
+    { x: -11, y: 0, z: -10.5, rot: (Math.PI / 360) * 42 },
   ]);
   const [lineColor, setLineColor] = useState([
     "#ff00ff",
@@ -234,12 +234,6 @@ const TestCircle3 = () => {
 
     return (
       <>
-        <mesh position={[0, 0, 0]}>
-          <ringGeometry args={[0.1, 1.6, 10, 2, 0, 2.0 * Math.PI]} />
-
-          <meshBasicMaterial color={`hsl(0, 0%, 0%)`} />
-        </mesh>
-
         {colors.map((color, index) => (
           <mesh position={[0, 0, 0]} ref={meshRef} key={"part3" + index}>
             <ringGeometry
@@ -253,18 +247,19 @@ const TestCircle3 = () => {
               ]}
             />
 
-            <meshLambertMaterial
+            <THREE.MeshBasicMaterial
+              //meshLambertMaterial
               color={`hsl(${color[0]}, ${color[1]}%, ${color[2]}%)`}
               // emissive={`hsl(${color[0]}, 100%, ${
               // 	40 + (Math.abs(80 - color[0]) - Math.abs(180 - color[0])) / 6
               // }%)`}
-              emissive={`hsl(${color[0]}, ${color[1]}%, ${color[2]}%)`}
-              emissiveIntensity={hslToRGB(color[0], color[1], color[2])} //hslToRGB(color[0], color[1], color[2])
-              toneMapped
-              roughness={0.9}
-              metalness={0.1}
-              specular={`hsl(${color[0]}, ${color[1]}%, ${color[2]}%)`}
-              shininess={100}
+              // emissive={`hsl(${color[0]}, ${color[1]}%, ${color[2]}%)`}
+              // emissiveIntensity={hslToRGB(color[0], color[1], color[2])} //hslToRGB(color[0], color[1], color[2])
+              toneMapped={false}
+              // roughness={0.9}
+              // metalness={0.1}
+              // specular={`hsl(${color[0]}, ${color[1]}%, ${color[2]}%)`}
+              // shininess={100}
             />
           </mesh>
         ))}
@@ -296,16 +291,6 @@ const TestCircle3 = () => {
     const meshRef = useRef();
     return (
       <>
-        <mesh
-          position={[-7.5, 0, -2]}
-          scale={0.5}
-          rotation={[0, 0, 0]}
-          key={"part333" + "-10t"}
-        >
-          <planeGeometry args={[33, 1, 1, 1]} />
-          {/* <boxGeometry args={[2, 1, 10, 50]} /> */}
-          <meshStandardMaterial color={"red"} />
-        </mesh>
         {linePos.map((item, index) => (
           <mesh
             position={[item.x * 1.8, item.y, item.z]}
@@ -315,8 +300,11 @@ const TestCircle3 = () => {
             key={"part333" + index}
           >
             <planeGeometry args={[3, 1, 1, 1]} />
-            {/* <boxGeometry args={[2, 1, 10, 50]} /> */}
-            <meshStandardMaterial color={lineColor[index]} />
+
+            <meshLambertMaterial
+              color={lineColor[index]}
+              emissiveIntensity={lineColor[index]}
+            />
           </mesh>
         ))}
       </>
@@ -348,49 +336,25 @@ const TestCircle3 = () => {
 				<outputPass args={[2]} />
 			</Effects> */}
 
-      <group
-        position={[31.5, 60.5, 11]}
-        scale={1.5}
-        onClick={() => {
-          alert("1");
-        }}
-      >
+      <group position={[31.5, 60.5, 11]} scale={1.5}>
         <Circle3 />
       </group>
-      <group
-        position={[42, 60, 20]}
-        scale={1.5}
-        onClick={() => {
-          alert("2");
-        }}
-      >
+      <group position={[42, 60, 20]} scale={1.5}>
         <Circle3 />
       </group>
-      <group
-        position={[134.5, 60, 20]}
-        scale={1.5}
-        onClick={() => {
-          alert("3");
-        }}
-      >
+      <group position={[134.5, 60, 20]} scale={1.5}>
         <Circle3 />
       </group>
-      <group
-        position={[146, 60.5, 11]}
-        scale={1.5}
-        onClick={() => {
-          alert("4");
-        }}
-      >
+      <group position={[146, 60.5, 11]} scale={1.5}>
         <Circle3 />
       </group>
 
       <group
         position={[54, 56, 25]}
         scale={1.5}
-        // onClick={() => {
-        //   alert("5");
-        // }}
+        onClick={() => {
+          alert("dkmaklmlka");
+        }}
       >
         <Squar />
       </group>

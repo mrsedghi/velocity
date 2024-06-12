@@ -1,7 +1,6 @@
 import ParsModel from "./ParsModel";
 
-import { useState } from "react";
-import React from "react";
+import { useContext, useState } from "react";
 import { HuePicker } from "react-color";
 import { FaPowerOff } from "react-icons/fa";
 import { LuLightbulbOff } from "react-icons/lu";
@@ -12,11 +11,12 @@ import { MdOutlineEdit } from "react-icons/md";
 import { LuSaveAll } from "react-icons/lu";
 
 import { MdDelete } from "react-icons/md";
-
-import "./Mainlayot.css";
+import { GlobalContext } from "../context/GlobalContext";
 
 function App() {
-  const [select, setSelect] = useState(0);
+  const { configs, setSelectedEffect, selectedEffect } =
+    useContext(GlobalContext);
+  const [select, setSelect] = useState(selectedEffect);
   const [check, setCheck] = useState(1);
   const [power, setPower] = useState(true);
   const [isset, setIsset] = useState(false);
@@ -87,7 +87,7 @@ function App() {
         >
           <IoSettingsOutline className="flex justify-center text-center items-center h-full text-[30px]" />
         </p>
-        <h1 class="text-gray-400 justify-center items-center text-[30px] text-center h-full">
+        <h1 className="text-gray-400 justify-center items-center text-[30px] text-center h-full">
           velocity
         </h1>
         <div className="flex justify-center text-center items-center">
@@ -103,9 +103,11 @@ function App() {
         <div className="EFFECT_BAR     carousel carousel-center h-[15%]  w-[90%] mx-auto space-x-4 ">
           {effect.map((item, index) => (
             <div
+              key={"effectBar" + index}
               className="flex flex-col justify-start items-center w-[80%]   "
               onClick={() => {
                 setCheck(index);
+                setSelectedEffect(index);
               }}
             >
               <div
@@ -135,6 +137,7 @@ function App() {
           {isCustomize &&
             effect.map((item, index) => (
               <div
+                key={"customize" + index}
                 className="flex flex-col justify-start items-center max-w-52 w-full   "
                 onClick={() => {
                   setCheck(index);

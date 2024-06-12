@@ -3,44 +3,36 @@ import {
   PresentationControls,
   Environment,
   ContactShadows,
+  useScroll,
+  Effects,
 } from "@react-three/drei";
 
 import { Canvas, extend } from "@react-three/fiber";
 
 import { UnrealBloomPass } from "three-stdlib";
 import { OutputPass } from "three/examples/jsm/postprocessing/OutputPass";
-import TestCircle3 from "./testCircle3";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import MyEffects from "./MyEffects";
 extend({ UnrealBloomPass, OutputPass });
 export default function ParsModel() {
   ///
 
   ///pars mpdel
-  const { scene } = useGLTF("/untitled1.glb");
-
-  // scene.children[33].children[0].children[0].children[0].children[16].children[0].children[0].material.color =
-  //   {
-  //     b: 0,
-  //     g: 1,
-  //     isColor: true,
-  //     r: 1,
-  //   };
-
-  // console.log(
-  //   " models: ",
-  //   scene.children[33].children[0].children[0].children[0].children[16]
-  //     .children[0].children[0].material.color
-  // );
-  const scen22 = scene;
+  const { scene } = useGLTF("/untitled1(1).glb");
+  const [mainLight, setMainLight] = useState([]);
   useEffect(() => {
-    scen22.children[0].children = scen22.children[0].children.filter(
-      (items, index) => index != 33 && index != 32
-    );
-    console.log(" models2: ", scene.children[0], "\n");
+    // scene.children[0].children = scen22.children[0].children.filter(
+    //   (items, index) => index !== 12
+    // );
+    const selected =
+      scene.children[scene.children.length - 1].children[0].children[0]
+        .children[0].children[16].children;
+    console.log(selected);
+    setMainLight(selected);
   }, []);
 
   function Pars405(props) {
-    return <primitive object={scen22} {...props} />;
+    return <primitive object={scene} {...props} />;
   }
   ///
   return (
@@ -70,7 +62,7 @@ export default function ParsModel() {
         >
           <Pars405 />
 
-          {/* <TestCircle3 /> */}
+          <MyEffects mainLight={mainLight} />
         </PresentationControls>
         <ContactShadows
           position={[0, -0.1, 0]}
