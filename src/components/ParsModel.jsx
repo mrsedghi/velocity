@@ -16,14 +16,25 @@ export default function ParsModel() {
   ///
 
   ///pars mpdel
-  const { scene } = useGLTF("/untitled.glb");
+  const { scene } = useGLTF("/untitled1.glb");
 
-  //console.log(" models: ", scene.children, "\n");
+  // scene.children[33].children[0].children[0].children[0].children[16].children[0].children[0].material.color =
+  //   {
+  //     b: 0,
+  //     g: 1,
+  //     isColor: true,
+  //     r: 1,
+  //   };
 
+  // console.log(
+  //   " models: ",
+  //   scene.children[33].children[0].children[0].children[0].children[16]
+  //     .children[0].children[0].material.color
+  // );
   const scen22 = scene;
   useEffect(() => {
     scen22.children[0].children = scen22.children[0].children.filter(
-      (items, index) => index != 12 && index != 10
+      (items, index) => index != 33 && index != 32
     );
     console.log(" models2: ", scene.children[0], "\n");
   }, []);
@@ -59,7 +70,7 @@ export default function ParsModel() {
         >
           <Pars405 />
 
-          <TestCircle3 />
+          {/* <TestCircle3 /> */}
         </PresentationControls>
         <ContactShadows
           position={[0, -0.1, 0]}
