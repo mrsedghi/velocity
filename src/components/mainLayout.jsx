@@ -33,6 +33,16 @@ function App() {
     { title: "welcome", color: "pink" },
     { title: "signal", color: "purple" },
     { title: "2 by 2", color: "skyblue" },
+    { title: "police 1", color: "red" },
+    { title: "police 2", color: "blue" },
+    { title: "p-change", color: "pink" },
+    { title: "p-glitter", color: "purple" },
+    { title: "p- loop", color: "skyblue" },
+    { title: "rainbow", color: "red" },
+    { title: "glitter", color: "blue" },
+    { title: "welcome", color: "pink" },
+    { title: "signal", color: "purple" },
+    { title: "2 by 2", color: "skyblue" },
   ]);
   const [ggg, setGgg] = useState("#ff2277");
   const [fff, setFff] = useState("#aabbcc");

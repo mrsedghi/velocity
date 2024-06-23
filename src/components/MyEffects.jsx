@@ -906,15 +906,15 @@ const MyEffects = (props) => {
   }, [mainLight]);
 
   useEffect(() => {
-    setGcurrentPatternNumber(configs[selectedEffect].gCurrentPatternNumber);
-    setcolors1(configs[selectedEffect].colors1);
-    setsats1(configs[selectedEffect].sats1);
-    setlights1(configs[selectedEffect].lights1);
-    setcolors2(configs[selectedEffect].colors2);
-    setsats2(configs[selectedEffect].sats1);
-    setlights2(configs[selectedEffect].lights1);
-    setcolors3(configs[selectedEffect].colors3);
-    setuseGhue(configs[selectedEffect].useGhue);
+    // setGcurrentPatternNumber(configs[selectedEffect].gCurrentPatternNumber);
+    // setcolors1(configs[selectedEffect].colors1);
+    // setsats1(configs[selectedEffect].sats1);
+    // setlights1(configs[selectedEffect].lights1);
+    // setcolors2(configs[selectedEffect].colors2);
+    // setsats2(configs[selectedEffect].sats1);
+    // setlights2(configs[selectedEffect].lights1);
+    // setcolors3(configs[selectedEffect].colors3);
+    // setuseGhue(configs[selectedEffect].useGhue);
     console.log(selectedEffect);
   }, [selectedEffect]);
   //
